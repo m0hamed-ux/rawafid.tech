@@ -48,14 +48,14 @@ export function Header({
           ))}
         </nav>
 
-        <a
-          href="mailto:hello@rawafid.tech"
+        <Link
+          href="/booking"
           className={`rounded-full px-5 py-2.5 text-sm font-medium transition-transform hover:-translate-y-0.5 active:scale-[0.98] ${
             overlay ? "bg-cream text-ink" : "bg-forest text-cream"
           }`}
         >
           Start a project
-        </a>
+        </Link>
       </div>
     </header>
   );

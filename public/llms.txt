@@ -4,13 +4,14 @@
 
 ## What we do
 
-- [Web design & development](https://rawafid.tech/#services): Custom websites and web apps designed around your goals, built on modern foundations, and fast on every device.
-- [Mobile apps](https://rawafid.tech/#services): iOS and Android apps that feel native, stay maintainable, and ship without drama.
-- [E-commerce](https://rawafid.tech/#services): Online stores where browsing is pleasant and checkout is effortless, from product page to payment.
-- [SEO & digital marketing](https://rawafid.tech/#services): Technical SEO, content strategy, and paid campaigns after launch.
+- [Web design & development](https://rawafid.tech/services#web-design-development): Custom websites and web apps designed around your goals, built on modern foundations, and fast on every device.
+- [Mobile apps](https://rawafid.tech/services#mobile-apps): iOS and Android apps that feel native, stay maintainable, and ship without drama.
+- [E-commerce](https://rawafid.tech/services#e-commerce): Online stores where browsing is pleasant and checkout is effortless, from product page to payment.
+- [SEO & digital marketing](https://rawafid.tech/services#seo-digital-marketing): Technical SEO, content strategy, and paid campaigns after launch.
 
 ## Projects
 
+- [All projects](https://rawafid.tech/projects): Selected work across commerce, hospitality, and fintech.
 - [Terra](https://rawafid.tech/projects/terra): E-commerce store for an organic skincare brand.
 - [Atlas Kitchen](https://rawafid.tech/projects/atlas-kitchen): Website and online reservations for a Mediterranean restaurant.
 - [Sanad](https://rawafid.tech/projects/sanad): Mobile banking app for iOS and Android.
@@ -23,5 +24,6 @@
 
 ## Contact
 
+- [Start a project](https://rawafid.tech/booking): A short step-by-step form about your business, goals, budget, and timeline. We reply within two working days.
 - Email: hello@rawafid.tech
 - Website: https://rawafid.tech

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -34,12 +35,12 @@ export function Hero() {
             className="rise mt-8"
             style={{ "--rise-delay": "0.4s" } as React.CSSProperties}
           >
-            <a
-              href="mailto:hello@rawafid.tech"
+            <Link
+              href="/booking"
               className="inline-block rounded-full bg-cream px-7 py-3.5 text-sm font-medium text-ink transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
             >
               Start a project
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -81,8 +81,8 @@ export default function ServicesPage() {
             Design, build, and grow. Under one roof.
           </h1>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-moss">
-            Four services that cover a digital product's whole life, from the
-            first sketch to the traffic that finds it.
+            Four services that cover the whole life of a digital product, from
+            the first sketch to the traffic that finds it.
           </p>
 
           <div className="mt-16">

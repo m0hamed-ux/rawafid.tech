@@ -58,8 +58,10 @@ export const structuredData = {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
+            "@id": `${siteUrl}/services#${service.slug}`,
             name: service.title,
             description: service.body,
+            url: `${siteUrl}/services#${service.slug}`,
             provider: { "@id": `${siteUrl}/#organization` },
             areaServed: { "@type": "Place", name: "Asia" },
           },

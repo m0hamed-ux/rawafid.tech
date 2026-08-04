@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
+import { Header } from "@/components/header";
 import { ProjectDetail } from "@/components/project-detail";
 import { Footer } from "@/components/footer";
 import { projects, siteName, siteUrl } from "@/lib/content";
@@ -87,7 +88,7 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
             "@type": "ListItem",
             position: 2,
             name: "Projects",
-            item: `${siteUrl}/#projects`,
+            item: `${siteUrl}/projects`,
           },
           {
             "@type": "ListItem",
@@ -106,10 +107,11 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="flex-1 pt-10 md:pt-14">
+      <Header variant="solid" />
+      <main className="flex-1 pt-8 md:pt-10">
         <div className="mx-auto max-w-3xl px-5 pb-8 md:px-8">
           <Link
-            href="/#projects"
+            href="/projects"
             className="inline-flex items-center gap-2 text-sm text-moss transition-colors hover:text-ink"
           >
             <ArrowLeft size={16} weight="bold" />

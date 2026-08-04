@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Footer() {
   return (
     <footer className="bg-forest-deep text-cream">
@@ -7,12 +9,12 @@ export function Footer() {
             <h2 className="max-w-md font-display text-3xl font-medium tracking-tight md:text-5xl">
               Have a project in mind?
             </h2>
-            <a
-              href="mailto:hello@rawafid.tech"
+            <Link
+              href="/booking"
               className="mt-6 inline-block rounded-full bg-cream px-7 py-3.5 text-sm font-medium text-ink transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
             >
               Start a project
-            </a>
+            </Link>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-cream/70">
             We work remotely with clients across Asia and worldwide. Write to
@@ -32,10 +34,10 @@ export function Footer() {
           </p>
           <nav className="flex flex-wrap gap-6">
             {[
-              { href: "#services", label: "Services" },
-              { href: "#projects", label: "Projects" },
-              { href: "#process", label: "Process" },
-              { href: "#faq", label: "FAQ" },
+              { href: "/services", label: "Services" },
+              { href: "/projects", label: "Projects" },
+              { href: "/#process", label: "Process" },
+              { href: "/#faq", label: "FAQ" },
             ].map((link) => (
               <a
                 key={link.href}

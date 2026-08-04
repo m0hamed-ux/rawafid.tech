@@ -76,6 +76,22 @@ export default function RootLayout({ children, modal }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${bricolage.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-69ER7TT99K"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-69ER7TT99K');
+            `,
+          }}
+        ></script>
+      </head>
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"

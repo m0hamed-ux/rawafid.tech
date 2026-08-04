@@ -14,8 +14,9 @@ export function Footer() {
               Start a project
             </a>
           </div>
-          <p className="text-sm text-cream/70">
-            Or write to us directly at{" "}
+          <p className="max-w-xs text-sm leading-relaxed text-cream/70">
+            We work remotely with clients across Asia and worldwide. Write to
+            us at{" "}
             <a
               href="mailto:hello@rawafid.tech"
               className="text-cream underline underline-offset-4"

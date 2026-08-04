@@ -2,29 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-
-const services = [
-  {
-    title: "Web design & development",
-    body: "Custom websites and web apps designed around your goals, built on modern foundations, and fast on every device.",
-    points: ["Marketing sites", "Web applications", "Redesigns"],
-  },
-  {
-    title: "Mobile apps",
-    body: "iOS and Android apps that feel native, stay maintainable, and ship without drama.",
-    points: ["iOS & Android", "Cross-platform builds", "App store launches"],
-  },
-  {
-    title: "E-commerce",
-    body: "Online stores where browsing is pleasant and checkout is effortless, from product page to payment.",
-    points: ["Custom storefronts", "Shopify builds", "Payment integration"],
-  },
-  {
-    title: "SEO & digital marketing",
-    body: "Getting found matters as much as looking good. We handle search, content, and campaigns after launch.",
-    points: ["Technical SEO", "Content strategy", "Paid campaigns"],
-  },
-];
+import { services } from "@/lib/content";
 
 export function Services() {
   const [active, setActive] = useState(0);

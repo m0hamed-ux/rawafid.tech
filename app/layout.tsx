@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Geist } from "next/font/google";
+import { siteDescription, siteName, siteUrl } from "@/lib/content";
+import { structuredData } from "@/lib/structured-data";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,16 +14,13 @@ const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://rawafid.tech";
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: "Rawafid | Web agency for design, development & growth",
-    template: "%s | Rawafid",
+    template: `%s | ${siteName}`,
   },
-  description:
-    "Rawafid is a web agency building websites, mobile apps, and e-commerce stores, backed by SEO and digital marketing that helps them get found.",
+  description: siteDescription,
   keywords: [
     "web agency",
     "web design",
@@ -30,6 +29,7 @@ export const metadata: Metadata = {
     "e-commerce",
     "SEO",
     "digital marketing",
+    "web agency Asia",
   ],
   alternates: {
     canonical: "/",
@@ -37,7 +37,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    siteName: "Rawafid",
+    siteName,
+    locale: "en_US",
     title: "Rawafid | Web agency for design, development & growth",
     description:
       "Websites, mobile apps, and e-commerce stores, built carefully and backed by SEO and digital marketing.",
@@ -60,25 +61,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Rawafid",
-  url: siteUrl,
-  email: "hello@rawafid.tech",
-  description:
-    "Web agency building websites, mobile apps, and e-commerce stores, backed by SEO and digital marketing.",
-  knowsAbout: [
-    "Web design",
-    "Web development",
-    "Mobile app development",
-    "E-commerce",
-    "SEO",
-    "Digital marketing",
-  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -90,7 +79,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         {children}
       </body>

@@ -1,0 +1,20 @@
+# Rawafid
+
+> Rawafid (rawafid.tech) is a web agency that designs and builds websites, mobile apps, and e-commerce stores, backed by SEO and digital marketing. We work remotely with clients across Asia and worldwide. Contact: hello@rawafid.tech
+
+## What we do
+
+- [Web design & development](https://rawafid.tech/#services): Custom websites and web apps designed around your goals, built on modern foundations, and fast on every device.
+- [Mobile apps](https://rawafid.tech/#services): iOS and Android apps that feel native, stay maintainable, and ship without drama.
+- [E-commerce](https://rawafid.tech/#services): Online stores where browsing is pleasant and checkout is effortless, from product page to payment.
+- [SEO & digital marketing](https://rawafid.tech/#services): Technical SEO, content strategy, and paid campaigns after launch.
+
+## How we work
+
+- [Process](https://rawafid.tech/#process): Listen, design, build, then launch and grow. Fixed price per project, agreed upfront. Projects run remotely over email and video calls with shared previews at every stage.
+- [FAQ](https://rawafid.tech/#faq): Typical marketing sites take four to eight weeks. We can also take over and improve existing websites. After launch, clients can self-manage or keep us on for maintenance, SEO, and marketing.
+
+## Contact
+
+- Email: hello@rawafid.tech
+- Website: https://rawafid.tech

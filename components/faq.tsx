@@ -1,25 +1,4 @@
-const faqs = [
-  {
-    q: "How long does a typical website take?",
-    a: "Most marketing sites take four to eight weeks from kickoff to launch. Web apps and e-commerce stores depend on scope; we agree on a timeline before work starts.",
-  },
-  {
-    q: "How do you price projects?",
-    a: "Fixed price per project, agreed upfront after we understand the scope. No hourly billing surprises.",
-  },
-  {
-    q: "Do you work with clients remotely?",
-    a: "Yes. Projects run over email and video calls, with shared previews at every stage so you always see progress.",
-  },
-  {
-    q: "Can you take over an existing website?",
-    a: "Yes. We audit what exists, keep what works, and improve or rebuild the rest.",
-  },
-  {
-    q: "What happens after launch?",
-    a: "You can hand it fully over to your team, or keep us on for maintenance, SEO, and marketing. Both are fine.",
-  },
-];
+import { faqs } from "@/lib/content";
 
 export function Faq() {
   return (

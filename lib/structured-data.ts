@@ -1,6 +1,7 @@
 import {
   email,
   faqs,
+  projects,
   services,
   siteDescription,
   siteName,
@@ -87,6 +88,17 @@ export const structuredData = {
         url: `${siteUrl}/images/hero.jpg`,
       },
       inLanguage: "en",
+    },
+    {
+      "@type": "ItemList",
+      "@id": `${siteUrl}/#projects-list`,
+      name: "Selected projects by Rawafid",
+      itemListElement: projects.map((project, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: project.name,
+        url: `${siteUrl}/projects/${project.slug}`,
+      })),
     },
     {
       "@type": "FAQPage",

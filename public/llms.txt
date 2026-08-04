@@ -9,6 +9,13 @@
 - [E-commerce](https://rawafid.tech/#services): Online stores where browsing is pleasant and checkout is effortless, from product page to payment.
 - [SEO & digital marketing](https://rawafid.tech/#services): Technical SEO, content strategy, and paid campaigns after launch.
 
+## Projects
+
+- [Terra](https://rawafid.tech/projects/terra): E-commerce store for an organic skincare brand.
+- [Atlas Kitchen](https://rawafid.tech/projects/atlas-kitchen): Website and online reservations for a Mediterranean restaurant.
+- [Sanad](https://rawafid.tech/projects/sanad): Mobile banking app for iOS and Android.
+- [Dar Nour](https://rawafid.tech/projects/dar-nour): Direct booking site for a boutique riad.
+
 ## How we work
 
 - [Process](https://rawafid.tech/#process): Listen, design, build, then launch and grow. Fixed price per project, agreed upfront. Projects run remotely over email and video calls with shared previews at every stage.

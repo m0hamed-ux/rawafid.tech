@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
+/*
+ * Rawafid design tokens.
+ * Palette: warm cream base, forest green accent (single accent family).
+ * Radius system: cards rounded-3xl (24px), interactive elements full pill.
+ * Theme: light, locked at page level (editorial reference design).
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #f2efe7;
+  --cream-deep: #e8e3d4;
+  --ink: #20261c;
+  --forest: #2c3f26;
+  --forest-deep: #1b2616;
+  --sage: #dde5c5;
+  --moss: #5f6754;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-ink: var(--ink);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-sage: var(--sage);
+  --color-moss: var(--moss);
+  --font-display: var(--font-bricolage);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Entrance rise for the hero, gated behind reduced-motion preference. */
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--rise-delay, 0s);
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Content crossfade when the active service changes (keyed remount). */
+  .detail-swap {
+    animation: detail-swap 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes detail-swap {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }

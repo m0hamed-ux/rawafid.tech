@@ -168,6 +168,8 @@ export function BookingForm() {
     {}
   );
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   // Move focus to the step heading so keyboard and screen reader users
@@ -224,35 +226,30 @@ export function BookingForm() {
     if (validate()) setStep((s) => s + 1);
   };
 
-  // No backend yet: the request becomes a prefilled email.
-  // Later, replace this with a POST to an API route.
-  const submit = () => {
-    if (!validate()) return;
-    const lines: string[] = [
-      `New project request from ${data.name}`,
-      "",
-      `Business: ${data.businessName}${data.industry ? ` (${data.industry})` : ""}`,
-    ];
-    if (data.website) lines.push(`Current website: ${data.website}`);
-    if (data.location) lines.push(`Based in: ${data.location}`);
-    lines.push("", `Services: ${data.services.join(", ")}`);
-    if (data.budget) lines.push(`Budget: ${data.budget}`);
-    if (data.timeline) lines.push(`Timeline: ${data.timeline}`);
-    const channel = channels.find((c) => c.id === data.channel);
-    lines.push(
-      "",
-      "About the project:",
-      data.description,
-      "",
-      `Name: ${data.name}`,
-      `Preferred contact: ${channel?.label ?? ""} (${data.contact})`
-    );
-    const body = lines.join("\n");
-
-    window.location.href = `mailto:${agencyEmail}?subject=${encodeURIComponent(
-      `Project request: ${data.businessName}`
-    )}&body=${encodeURIComponent(body)}`;
-    setSubmitted(true);
+  const submit = async () => {
+    if (!validate() || submitting) return;
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      const res = await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const payload = (await res.json().catch(() => null)) as {
+          error?: string;
+        } | null;
+        throw new Error(payload?.error ?? "Could not save your request.");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error ? err.message : "Could not save your request."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -269,15 +266,16 @@ export function BookingForm() {
           Your request is on its way
         </h2>
         <p className="mt-3 max-w-md text-base leading-relaxed text-moss">
-          Your email app should have opened with everything filled in. Just
-          press send. If it did not open, write to us directly at{" "}
+          Thanks, {data.name.split(" ")[0]}. We received your request and will
+          get back to you on {channels.find((c) => c.id === data.channel)?.label}{" "}
+          within two working days. Anything urgent in the meantime? Write to{" "}
           <a
             href={`mailto:${agencyEmail}`}
             className="text-ink underline underline-offset-4"
           >
             {agencyEmail}
           </a>
-          . We reply within two working days.
+          .
         </p>
       </div>
     );
@@ -568,13 +566,27 @@ export function BookingForm() {
           <button
             type="button"
             onClick={submit}
-            className="inline-flex items-center gap-2 rounded-full bg-forest px-7 py-3.5 text-sm font-medium text-cream transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
+            disabled={submitting}
+            className="inline-flex items-center gap-2 rounded-full bg-forest px-7 py-3.5 text-sm font-medium text-cream transition-transform hover:-translate-y-0.5 active:scale-[0.98] disabled:cursor-wait disabled:opacity-70 disabled:hover:translate-y-0"
           >
-            Send request
+            {submitting ? "Sending..." : "Send request"}
             <PaperPlaneTilt size={16} weight="bold" />
           </button>
         )}
       </div>
+
+      {submitError && (
+        <p className="mt-4 text-right text-sm text-red-700" role="alert">
+          {submitError} You can also email us at{" "}
+          <a
+            href={`mailto:${agencyEmail}`}
+            className="underline underline-offset-4"
+          >
+            {agencyEmail}
+          </a>
+          .
+        </p>
+      )}
     </div>
   );
 }

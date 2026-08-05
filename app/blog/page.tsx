@@ -6,6 +6,9 @@ import { Footer } from "@/components/footer";
 import { formatDate, getPosts, readingTime } from "@/lib/blog";
 import { siteName, siteUrl } from "@/lib/content";
 
+// Pick up new posts from the database within the hour, no redeploy.
+export const revalidate = 3600;
+
 const pageTitle = "Blog: practical advice on websites, apps & growth";
 const pageDescription =
   "Practical, plain-language articles from Rawafid on websites, mobile apps, e-commerce, and SEO. Written for business owners, not developers.";

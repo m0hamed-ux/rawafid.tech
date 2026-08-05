@@ -1,10 +1,11 @@
+import { getSupabase } from "./supabase";
+
 /**
  * Blog data layer.
  *
- * Today the posts live in this file as static data, and /api/posts serves
- * the same array. When the database arrives, replace the bodies of
- * getPosts() and getPost() with queries; every page, sitemap, and API
- * route already goes through them, so nothing else changes.
+ * Posts come from the Supabase `posts` table. Until the env keys are set
+ * in .env.local, getPosts()/getPost() fall back to the static posts below,
+ * so the site works in both states with no code change.
  *
  * Content is structured blocks instead of raw HTML, so adding an image,
  * an FAQ, or a mention of Rawafid inside any paragraph stays a one-liner.
@@ -234,13 +235,79 @@ const posts: Post[] = [
   },
 ];
 
-// Swap these internals for database queries later; signatures stay the same.
-export async function getPosts(): Promise<Post[]> {
+function hasSupabase(): boolean {
+  return Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  );
+}
+
+/** Row shape of the public.posts table (supabase/schema.sql). */
+type PostRow = {
+  slug: string;
+  title: string;
+  description: string;
+  cover: string;
+  cover_alt: string;
+  tags: string[];
+  blocks: PostBlock[];
+  faqs: { q: string; a: string }[];
+  published_at: string;
+  updated_at: string;
+};
+
+const POST_COLUMNS =
+  "slug, title, description, cover, cover_alt, tags, blocks, faqs, published_at, updated_at";
+
+function rowToPost(row: PostRow): Post {
+  return {
+    slug: row.slug,
+    title: row.title,
+    description: row.description,
+    cover: row.cover,
+    coverAlt: row.cover_alt,
+    tags: row.tags,
+    blocks: row.blocks,
+    faqs: row.faqs,
+    publishedAt: row.published_at,
+    updatedAt: row.updated_at.slice(0, 10),
+  };
+}
+
+function fallbackPosts(): Post[] {
   return [...posts].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 }
 
+export async function getPosts(): Promise<Post[]> {
+  if (!hasSupabase()) return fallbackPosts();
+
+  const { data, error } = await getSupabase()
+    .from("posts")
+    .select(POST_COLUMNS)
+    .order("published_at", { ascending: false });
+
+  if (error) {
+    // A database hiccup should not take the whole blog down.
+    console.error("getPosts failed, serving fallback posts:", error.message);
+    return fallbackPosts();
+  }
+  return (data as PostRow[]).map(rowToPost);
+}
+
 export async function getPost(slug: string): Promise<Post | undefined> {
-  return posts.find((post) => post.slug === slug);
+  if (!hasSupabase()) return posts.find((post) => post.slug === slug);
+
+  const { data, error } = await getSupabase()
+    .from("posts")
+    .select(POST_COLUMNS)
+    .eq("slug", slug)
+    .maybeSingle();
+
+  if (error) {
+    console.error("getPost failed, serving fallback post:", error.message);
+    return posts.find((post) => post.slug === slug);
+  }
+  return data ? rowToPost(data as PostRow) : undefined;
 }
 
 export function readingTime(post: Post): number {

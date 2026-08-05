@@ -17,6 +17,10 @@
 - [Sanad](https://rawafid.tech/projects/sanad): Mobile banking app for iOS and Android.
 - [Dar Nour](https://rawafid.tech/projects/dar-nour): Direct booking site for a boutique riad.
 
+## Blog
+
+- [Blog](https://rawafid.tech/blog): Practical, plain-language articles on websites, mobile apps, e-commerce, and SEO, written for business owners. A new article every day.
+
 ## How we work
 
 - [Process](https://rawafid.tech/#process): Listen, design, build, then launch and grow. Fixed price per project, agreed upfront. Projects run remotely over email and video calls with shared previews at every stage.

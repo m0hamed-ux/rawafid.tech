@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Bricolage_Grotesque, Geist } from "next/font/google";
 import { siteDescription, siteName, siteUrl } from "@/lib/content";
 import { structuredData } from "@/lib/structured-data";
@@ -76,22 +77,7 @@ export default function RootLayout({ children, modal }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${bricolage.variable} h-full antialiased`}
     >
-      <head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-69ER7TT99K"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-69ER7TT99K');
-            `,
-          }}
-        ></script>
-      </head>
+      <GoogleAnalytics gaId="G-69ER7TT99K" />
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"

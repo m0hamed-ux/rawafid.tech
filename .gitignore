@@ -42,3 +42,6 @@ next-env.d.ts
 
 scripts
 supabase
+
+# Local admin panel (never commit or deploy)
+/admin

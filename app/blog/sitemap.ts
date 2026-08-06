@@ -6,7 +6,7 @@ import { siteUrl } from "@/lib/content";
 // with one post per day this file changes daily and crawlers re-fetch it
 // often, while the main sitemap stays stable. Regenerated hourly once the
 // posts come from the database.
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getPosts();
@@ -20,7 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     ...posts.map((post) => ({
       url: `${siteUrl}/blog/${post.slug}`,
-      lastModified: new Date(post.updatedAt),
+      lastModified: new Date(post.updatedAt || post.publishedAt),
       changeFrequency: "weekly" as const,
       priority: 0.8,
     })),

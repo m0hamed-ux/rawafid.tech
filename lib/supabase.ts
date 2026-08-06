@@ -19,5 +19,12 @@ export function getSupabase() {
   }
   return createClient(url, key, {
     auth: { persistSession: false },
+    global: {
+      fetch: (url, options) =>
+        fetch(url, {
+          ...options,
+          next: { revalidate: 60 },
+        }),
+    },
   });
 }
